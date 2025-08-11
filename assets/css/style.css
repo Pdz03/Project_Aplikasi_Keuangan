@@ -1,0 +1,22 @@
+
+/* Custom simple styles for CI3 starter app */
+body {
+    background: #f6f8fa;
+    color: #343a40;
+}
+.app-navbar {
+    margin-bottom: 1.5rem;
+}
+.container-card {
+    background: #ffffff;
+    padding: 1.25rem;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+footer.app-footer {
+    margin-top: 2rem;
+    padding: 1rem 0;
+    color: #6c757d;
+    text-align: center;
+    font-size: 0.9rem;
+}
