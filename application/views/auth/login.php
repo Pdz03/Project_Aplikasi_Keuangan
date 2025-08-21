@@ -7,43 +7,65 @@
   <title>Login - CI Keuangan</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="<?= base_url('assets/css/style.css'); ?>" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-card {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .login-card .card-body {
+      padding: 2rem;
+    }
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0d6efd;
+    }
+  </style>
 </head>
-<body class="bg-light">
+<body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white app-navbar shadow-sm">
-  <div class="container">
-    <a class="navbar-brand fw-bold" href="<?= base_url(); ?>">CI Keuangan</a>
-  </div>
-</nav>
-
-<div class="container py-5">
+<div class="container">
   <div class="row justify-content-center">
     <div class="col-md-5">
-      <div class="bg-white p-4 rounded-4 shadow-sm">
-        <h4 class="mb-4 text-center fw-semibold">Masuk ke Akun</h4>
-
-        <?php if(!empty($error)): ?>
-          <div class="alert alert-danger"><?= $error; ?></div>
-        <?php endif; ?>
-
-        <form method="post" action="<?= site_url('auth/login'); ?>">
-          <div class="mb-3">
-            <label class="form-label fw-medium">Username</label>
-            <input name="username" class="form-control" required autofocus>
+      <div class="card shadow-lg login-card">
+        <div class="card-body">
+          <div class="text-center mb-4">
+            <div class="brand">CI Keuangan</div>
+            <p class="text-muted">Masuk untuk melanjutkan</p>
           </div>
-          <div class="mb-3">
-            <label class="form-label fw-medium">Password</label>
-            <input type="password" name="password" class="form-control" required>
-          </div>
-          <button class="btn btn-primary w-100 mt-2">Login</button>
-        </form>
 
-        <hr>
-        <small class="text-muted d-block text-center">
-          Default admin: <strong>admin</strong> / <strong>TerangBulanKeju2025</strong>
-        </small>
+          <?php if(!empty($error)): ?>
+            <div class="alert alert-danger"><?= $error; ?></div>
+          <?php endif; ?>
+
+          <form method="post" action="<?= site_url('auth/login'); ?>">
+            <div class="mb-3">
+              <label class="form-label">Username</label>
+              <input name="username" class="form-control" placeholder="Masukkan username" required autofocus>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" name="password" class="form-control" placeholder="Masukkan password" required>
+            </div>
+            <button class="btn btn-primary w-100 mt-2">Login</button>
+          </form>
+
+          <hr>
+          <div class="text-center">
+            <small class="text-muted">
+              Default admin: <strong>admin</strong> / <strong>TerangBulanKeju2025</strong>
+            </small>
+          </div>
+        </div>
       </div>
-      <p class="mt-3 text-center text-muted">CI3 Starter Project — latihan PKL</p>
+      <p class="mt-3 text-center text-light small">© 2025 CI3 Starter Project — Latihan PKL</p>
     </div>
   </div>
 </div>
