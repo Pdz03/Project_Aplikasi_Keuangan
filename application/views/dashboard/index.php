@@ -38,7 +38,7 @@
 			<h3 class="fw-semibold mb-0"><i class="bi bi-speedometer2 me-2"></i>Dashboard</h3>
 			<div class="d-flex gap-2">
 				<a href="<?= site_url('transaksi'); ?>" class="btn btn-primary"><i class="bi bi-list-ul me-1"></i> Daftar</a>
-				<a href="<?= site_url('transaksi/add'); ?>" class="btn btn-success"><i class="bi bi-plus-lg me-1"></i> Tambah</a>
+				<!-- <a href="<?= site_url('transaksi/add'); ?>" class="btn btn-success"><i class="bi bi-plus-lg me-1"></i> Tambah</a> -->
 				<a href="<?= site_url('laporan'); ?>" class="btn btn-outline-secondary"><i class="bi bi-file-earmark-text me-1"></i> Laporan</a>
 			</div>
 		</div>

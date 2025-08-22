@@ -73,6 +73,12 @@
 			<h4 class="fw-semibold mb-3">📊 Laporan Bulanan</h4>
 
 			<!-- Filter -->
+			<div class="mb-3">
+				<a href="<?= site_url('dashboard'); ?>" class="btn btn-secondary">
+					<i class="fas fa-arrow-left"></i> Kembali
+				</a>
+			</div>
+
 			<div class="filter-bar mb-4">
 				<form method="get" class="row g-3 align-items-end">
 					<div class="col-md-3">
@@ -93,9 +99,8 @@
 						</a>
 
 						<a href="<?= site_url('laporan/export_excel?year=' . $year . '&month=' . $month); ?>" class="btn btn-outline-success">
-							<i class="bi bi-file-earmark-excel"></i> Export Excel
+							<i class="fa-solid fa-file-excel"></i> Export Excel
 						</a>
-
 					</div>
 				</form>
 			</div>
