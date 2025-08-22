@@ -50,7 +50,18 @@ class Laporan extends CI_Controller
 
 	public function export_excel()
 	{
-		// TODO: Implement export to Excel (suggested lib: PhpSpreadsheet)
-		show_error('Fitur export Excel belum diimplementasikan. (TODO)');
+		$year = $this->input->get('year');
+		$month = $this->input->get('month');
+
+		$data['laporan'] = $this->Transaksi_model->get_by_month($year, $month);
+
+		// Set header supaya otomatis jadi file Excel
+		header("Content-Type: application/vnd.ms-excel");
+		header("Content-Disposition: attachment; filename=laporan_{$year}_{$month}.xls");
+		header("Pragma: no-cache");
+		header("Expires: 0");
+
+		// Load view excel
+		$this->load->view('laporan/excel', $data);
 	}
 }

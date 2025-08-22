@@ -37,8 +37,8 @@
       <div class="card shadow-lg login-card">
         <div class="card-body">
           <div class="text-center mb-4">
-            <div class="brand">CI Keuangan</div>
-            <p class="text-muted">Masuk untuk melanjutkan</p>
+            <div class="brand">Form Login Keuangan</div>
+            <p class="text-muted">Masuk akun yang sudah terdaftar.</p>
           </div>
 
           <?php if(!empty($error)): ?>

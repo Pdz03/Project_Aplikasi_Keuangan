@@ -12,6 +12,8 @@
         th { background-color: #2c3e50; color: #fff; }
         tfoot td { font-weight: bold; background-color: #f8f8f8; }
         .footer { margin-top: 40px; text-align: center; font-size: 10px; color: #666; }
+        .masuk { color: green; font-weight: bold; }
+        .keluar { color: red; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -33,12 +35,17 @@
                 $total = 0;
                 if(!empty($rekap)): 
                     foreach($rekap as $row): 
-                        $total += $row->nominal;
+                        // hitung total sesuai jenis
+                        if(strtolower($row->jenis) === 'masuk'){
+                            $total += $row->nominal;
+                        } else {
+                            $total -= $row->nominal;
+                        }
             ?>
                 <tr>
                     <td><?= $row->id ?></td>
                     <td><?= date('d-m-Y', strtotime($row->tanggal)) ?></td>
-                    <td><?= ucfirst($row->jenis) ?></td>
+                    <td class="<?= strtolower($row->jenis) ?>"><?= ucfirst($row->jenis) ?></td>
                     <td>Rp <?= number_format($row->nominal, 0, ',', '.') ?></td>
                     <td><?= $row->keterangan ?></td>
                 </tr>

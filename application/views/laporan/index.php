@@ -93,7 +93,7 @@
 						</a>
 
 						<a href="<?= site_url('laporan/export_excel?year=' . $year . '&month=' . $month); ?>" class="btn btn-outline-success">
-							<i class="fas fa-file-excel"></i> Export Excel
+							<i class="bi bi-file-earmark-excel"></i> Export Excel
 						</a>
 
 					</div>

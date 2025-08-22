@@ -51,7 +51,7 @@ class Transaksi_model extends CI_Model
 		$pengeluaran = (float)$this->db->select_sum('nominal')->where(['jenis' => 'keluar'])->where("YEAR(tanggal)", $year)->where("MONTH(tanggal)", $month)->get($this->table)->row()->nominal;
 		return ['pemasukan' => $pemasukan, 'pengeluaran' => $pengeluaran];
 	}
-	
+
 	public function count_all()
 	{
 		return (int) $this->db->count_all($this->table);
