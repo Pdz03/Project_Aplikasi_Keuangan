@@ -145,7 +145,7 @@
 
 			<!-- Pagination -->
 			<div class="d-flex justify-content-end">
-				<?= $this->pagination->create_links(); ?>
+				<?= $pagination;?>
 			</div>
 		</div>
 

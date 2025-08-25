@@ -19,22 +19,46 @@ class Transaksi extends CI_Controller
 		$this->load->library('pagination');
 
 		$config['base_url'] = site_url('transaksi/index');
-		$config['total_rows'] = (int)$this->Transaksi_model->count_all();
+		$config['total_rows'] = $this->Transaksi_model->count_all();
 		$config['per_page'] = 5;
 		$config['uri_segment'] = 3;
 
+		// Styling
 		$config['full_tag_open'] = '<nav><ul class="pagination justify-content-end">';
 		$config['full_tag_close'] = '</ul></nav>';
-		$config['num_tag_open'] = '<li class="page-item">';
-		$config['num_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="page-item active"><a class="page-link">';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['attributes'] = ['class' => 'page-link'];
+
+		$config['first_link'] = '«';
+		$config['first_tag_open'] = '<li class="page-item"><span class="page-link">';
+		$config['first_tag_close'] = '</span></li>';
+
+		$config['last_link'] = '»';
+		$config['last_tag_open'] = '<li class="page-item"><span class="page-link">';
+		$config['last_tag_close'] = '</span></li>';
+
+		$config['next_link'] = '&raquo;';
+		$config['next_tag_open'] = '<li class="page-item"><span class="page-link">';
+		$config['next_tag_close'] = '</span></li>';
+
+		$config['prev_link'] = '&laquo;';
+		$config['prev_tag_open'] = '<li class="page-item"><span class="page-link">';
+		$config['prev_tag_close'] = '</span></li>';
+
+		$config['cur_tag_open'] = '<li class="page-item active"><span class="page-link">';
+		$config['cur_tag_close'] = '</span></li>';
+
+		$config['num_tag_open'] = '<li class="page-item"><span class="page-link">';
+		$config['num_tag_close'] = '</span></li>';
 
 		$this->pagination->initialize($config);
 
-		$page = ($this->uri->segment(3)) ? (int)$this->uri->segment(3) : 0;
+		// Fix ctype_digit null warning
+		$page = ($this->uri->segment(3) !== null && ctype_digit((string)$this->uri->segment(3)))
+			? (int)$this->uri->segment(3)
+			: 0;
+
 		$data['transaksi'] = $this->Transaksi_model->get_limit($config['per_page'], $page);
+		$data['pagination'] = $this->pagination->create_links();
+
 		$this->load->view('transaksi/index', $data);
 	}
 

@@ -517,15 +517,15 @@ class CI_Pagination {
 				$this->cur_page = str_replace(array($this->prefix, $this->suffix), '', $this->cur_page);
 			}
 		}
-		else
+		else	
 		{
 			$this->cur_page = (string) $this->cur_page;
 		}
 
 		// If something isn't quite right, back to the default base page.
-		if ( ! ctype_digit($this->cur_page) OR ($this->use_page_numbers && (int) $this->cur_page === 0))
+		if (!empty($page) && ctype_digit((string) $page))
 		{
-			$this->cur_page = $base_page;
+   			 $this->cur_page = (int) $page;
 		}
 		else
 		{

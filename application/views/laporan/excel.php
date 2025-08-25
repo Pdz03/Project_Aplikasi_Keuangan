@@ -12,7 +12,11 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($laporan as $row): ?>
+        <?php 
+        $total = 0; // inisialisasi
+        foreach($laporan as $row): 
+            $total += $row->nominal; // hitung total
+        ?>
         <tr style="text-align: center;">
             <td><?= $row->id; ?></td>
             <td><?= $row->tanggal; ?></td>
@@ -21,5 +25,10 @@
             <td><?= $row->keterangan; ?></td>
         </tr>
         <?php endforeach; ?>
+        <tr style="font-weight:bold; background:#ecf0f1;">
+            <td colspan="3" style="text-align:ce;">TOTAL</td>
+            <td style="text-align:center;">Rp <?= number_format($total, 0, ',', '.'); ?></td>
+            <td></td>
+        </tr>
     </tbody>
 </table>
