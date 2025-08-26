@@ -2,7 +2,7 @@ TODO checklist for instructors / students:
 
 - [ ✔|Fairuz ] Implement export_pdf in application/controllers/Laporan.php
 - [ ✔|Fairuz ] Implement export_excel in application/controllers/Laporan.php
-- [ ] Add form_validation rules and CSRF protection	
+- [ ✔|Arham  ] Add form_validation rules and CSRF protection	
 - [ ✔|Fairuz ] Improve UI (Bootstrap)
 - [ ] Add unit tests for Transaksi_model
 - [ ✔|Fairuz ] Add pagination to transaksi listing
