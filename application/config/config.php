@@ -23,9 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://project_aplikasi_keuangan/';
 
 
+
+
+$config['base_url'] = 'http://Project_Aplikasi_Keuangan.test/';
+ 419fa45 (memperbaiki eror pada export pdf)
 
 /*
 |--------------------------------------------------------------------------

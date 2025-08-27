@@ -18,11 +18,11 @@ DROP TABLE IF EXISTS `transaksi`;
 CREATE TABLE `transaksi` (
   `id` int NOT NULL AUTO_INCREMENT,
   `tanggal` date NOT NULL,
-  `jenis` enum('masuk','keluar') NOT NULL,
+  `jenis` enum('masuk','keluar') NOT NULL
   `nominal` decimal(15,2) NOT NULL DEFAULT '0.00',
   `keterangan` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=I nnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Sample data
 INSERT INTO `transaksi` (`tanggal`, `jenis`, `nominal`, `keterangan`) VALUES
