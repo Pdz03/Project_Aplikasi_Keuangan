@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 $config['base_url'] = 'http://Project_Aplikasi_Keuangan.test/';
- 419fa45 (memperbaiki eror pada export pdf)
+//  419fa45 (memperbaiki eror pada export pdf)
 
 /*
 |--------------------------------------------------------------------------
