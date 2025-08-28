@@ -81,8 +81,8 @@ class Transaksi extends CI_Controller
 		$this->_set_validation_rules();
 
 		if ($this->form_validation->run() == FALSE) {
-			$data['transaksi'] = $trans;
-			$this->load->view('transaksi/form', $data);
+			// 🔹 Tidak lagi load view form, cukup redirect agar tetap di halaman transaksi
+			redirect('transaksi');
 		} else {
 			$post = $this->input->post(NULL, true);
 			$update = [
