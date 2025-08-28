@@ -84,5 +84,12 @@ class Transaksi_model extends CI_Model
         return $this->db->get($this->table, $limit, $start)->result();
     }
 
+    public function resetAutoIncrement() {
+    $this->db->query("SET @num := 0");
+    $this->db->query("UPDATE transaksi SET id = @num := @num + 1 ORDER BY id");
+    $this->db->query("ALTER TABLE transaksi AUTO_INCREMENT = 1");
+}
+
+
     // Kamu bisa menambahkan method tambahan (filter, pagination, optimasi) di sini
 }

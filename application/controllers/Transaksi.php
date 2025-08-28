@@ -99,6 +99,7 @@ class Transaksi extends CI_Controller
 	public function delete($id)
 	{
 		$this->Transaksi_model->delete($id);
+		$this->Transaksi_model->resetAutoIncrement();
 		redirect('transaksi');
 	}
 
