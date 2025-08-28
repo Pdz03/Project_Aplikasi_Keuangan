@@ -124,15 +124,63 @@
 									</td>
 									<td><?= $t->keterangan; ?></td>
 									<td class="text-center action-btns">
-										<a href="<?= site_url('transaksi/edit/' . $t->id); ?>" class="btn btn-sm btn-primary" title="Edit">
+										<!-- Tombol Edit buka modal -->
+										<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#editModal<?= $t->id; ?>">
 											<i class="bi bi-pencil"></i>
-										</a>
+										</button>
+										<!-- Tombol Hapus -->
 										<a href="<?= site_url('transaksi/delete/' . $t->id); ?>" class="btn btn-sm btn-danger"
 											onclick="return confirm('Hapus transaksi ini?')" title="Hapus">
 											<i class="bi bi-trash"></i>
 										</a>
 									</td>
 								</tr>
+
+								<!-- Modal Edit Transaksi -->
+								<div class="modal fade" id="editModal<?= $t->id; ?>" tabindex="-1" aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content rounded-4 shadow">
+											<div class="modal-header">
+												<h5 class="modal-title">Edit Transaksi #<?= $t->id; ?></h5>
+												<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+											</div>
+											<div class="modal-body">
+												<form method="post" action="<?= site_url('transaksi/edit/' . $t->id); ?>">
+													<input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>"
+														value="<?= $this->security->get_csrf_hash(); ?>" />
+
+													<div class="mb-3">
+														<label class="form-label">Tanggal</label>
+														<input type="date" name="tanggal" class="form-control"
+															value="<?= $t->tanggal; ?>" required>
+													</div>
+
+													<div class="mb-3">
+														<label class="form-label">Jenis</label>
+														<select name="jenis" class="form-select" required>
+															<option value="masuk" <?= $t->jenis == 'masuk' ? 'selected' : ''; ?>>Pemasukan</option>
+															<option value="keluar" <?= $t->jenis == 'keluar' ? 'selected' : ''; ?>>Pengeluaran</option>
+														</select>
+													</div>
+
+													<div class="mb-3">
+														<label class="form-label">Nominal</label>
+														<input type="number" name="nominal" class="form-control"
+															value="<?= $t->nominal; ?>" required>
+													</div>
+
+													<div class="mb-3">
+														<label class="form-label">Keterangan</label>
+														<textarea name="keterangan" class="form-control" rows="3"><?= $t->keterangan; ?></textarea>
+													</div>
+
+													<button type="submit" class="btn btn-success w-100">Simpan Perubahan</button>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- End Modal -->
 							<?php endforeach; ?>
 						<?php else: ?>
 							<tr>
@@ -145,7 +193,7 @@
 
 			<!-- Pagination -->
 			<div class="d-flex justify-content-end">
-				<?= $pagination;?>
+				<?= $pagination; ?>
 			</div>
 		</div>
 
