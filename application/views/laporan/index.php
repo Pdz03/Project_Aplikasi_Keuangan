@@ -9,97 +9,174 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 	<style>
+		body {
+			background: #f4f6fb;
+			font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+			color: #374151;
+			font-size: 0.9rem;
+		}
+
+		/* Header */
+		.header {
+			background: linear-gradient(135deg, #6366f1, #4f46e5, #312e81);
+			color: white;
+			padding: 20px 0;
+			border-bottom-left-radius: 1rem;
+			border-bottom-right-radius: 1rem;
+			box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+		}
+
+		.header .brand {
+			font-size: 1.1rem;
+			font-weight: 700;
+		}
+
+		.page-title {
+			font-weight: 600;
+			font-size: 1.1rem;
+		}
+
+		.card-custom {
+			border: none;
+			border-radius: .7rem;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+			background: #fff;
+			padding: 15px;
+		}
+
+		/* Filter */
 		.filter-bar {
-			background: #f8f9fa;
-			border-radius: .75rem;
-			padding: 16px 20px;
-			border: 1px solid #e1e1e1;
+			background: #eef2ff;
+			border-radius: .7rem;
+			padding: 10px 15px;
+			border: 1px solid #c7d2fe;
 		}
 
-		.badge-masuk {
-			background: #198754;
-			font-weight: 500;
+		/* Summary Cards */
+		.summary-box {
+			background: white;
+			border-radius: .7rem;
+			padding: 12px;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+			display: flex;
+			align-items: center;
+			transition: all .2s ease;
+			min-height: 70px;
 		}
 
-		.badge-keluar {
-			background: #dc3545;
-			font-weight: 500;
-		}
-
-		.table thead th {
-			background: #2c3e50;
+		.summary-box i {
+			font-size: 1.2rem;
+			padding: 8px;
+			border-radius: 50%;
 			color: #fff;
 		}
 
-		.summary-box {
-			background: #f8f9fa;
-			border-radius: .75rem;
-			padding: 16px;
-			text-align: center;
-		}
-
-		.summary-box h5 {
-			margin: 0;
-			font-weight: bold;
+		.summary-box h6 {
+			font-size: .75rem;
+			font-weight: 600;
+			color: #6b7280;
+			margin-bottom: 2px;
 		}
 
 		.summary-box p {
+			font-size: 1rem;
+			font-weight: 700;
 			margin: 0;
-			font-size: 1.2rem;
+		}
+
+		/* Badges */
+		.badge-masuk {
+			background: #22c55e;
+			font-weight: 500;
+			border-radius: 20px;
+			padding: 3px 10px;
+			font-size: .75rem;
+		}
+
+		.badge-keluar {
+			background: #ef4444;
+			font-weight: 500;
+			border-radius: 20px;
+			padding: 3px 10px;
+			font-size: .75rem;
+		}
+
+		/* Table */
+		.table thead th {
+			background: #4f46e5;
+			color: #fff;
+			border: none;
+			font-size: .85rem;
+		}
+
+		.table td,
+		.table th {
+			padding: 6px 10px;
+			vertical-align: middle;
+		}
+
+		.table-hover tbody tr:hover {
+			background: #f9fafb;
+		}
+
+		.footer-text {
+			color: #6b7280;
+			font-size: .75rem;
 		}
 	</style>
 </head>
 
 <body>
 
-	<!-- Navbar -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-		<div class="container">
-			<a class="navbar-brand fw-bold text-primary" href="<?= site_url('dashboard'); ?>">
-				<i class="fas fa-wallet me-2"></i>Keuangan Digital
-			</a>
-			<div class="ms-auto d-flex align-items-center">
-				<a href="<?= site_url('auth/logout'); ?>" class="btn btn-outline-danger btn-sm">
-					<i class="fas fa-sign-out-alt"></i> Logout
+	<!-- Header -->
+	<div class="header">
+		<div class="container d-flex justify-content-between align-items-center">
+			<div class="brand">
+				<i class="fas fa-coins me-2"></i>Keuangan Modern
+			</div>
+			<div class="d-flex gap-2">
+				<span class="btn btn-light btn-sm text-dark fw-semibold disabled">👋 Hai, <b>Admin</b></span>
+				<a href="<?= site_url('auth/logout'); ?>" class="btn btn-outline-light btn-sm">
+					<i class="fas fa-right-from-bracket"></i> Logout
 				</a>
 			</div>
 		</div>
-	</nav>
+		<div class="container mt-2">
+			<h2 class="page-title"><i class="fas fa-file-invoice-dollar me-2"></i>Laporan Bulanan</h2>
+		</div>
+	</div>
 
 	<!-- Content -->
-	<div class="container py-4">
-		<div class="bg-white rounded-4 p-4 shadow-sm">
+	<div class="container py-3">
+		<div class="card card-custom">
 
-			<h4 class="fw-semibold mb-3">📊 Laporan Bulanan</h4>
-
-			<!-- Filter -->
-			<div class="mb-3">
-				<a href="<?= site_url('dashboard'); ?>" class="btn btn-secondary">
+			<!-- Back -->
+			<div class="mb-2">
+				<a href="<?= site_url('dashboard'); ?>" class="btn btn-outline-secondary rounded-pill btn-sm">
 					<i class="fas fa-arrow-left"></i> Kembali
 				</a>
 			</div>
 
-			<div class="filter-bar mb-4">
-				<form method="get" class="row g-3 align-items-end">
+			<!-- Filter -->
+			<div class="filter-bar mb-3">
+				<form method="get" class="row g-2 align-items-end">
 					<div class="col-md-3">
 						<label class="form-label fw-semibold">Tahun</label>
-						<input type="number" name="year" class="form-control" value="<?= $year; ?>">
+						<input type="number" name="year" class="form-control rounded-pill form-control-sm" value="<?= $year; ?>">
 					</div>
 					<div class="col-md-3">
 						<label class="form-label fw-semibold">Bulan</label>
-						<input type="number" name="month" class="form-control" value="<?= $month; ?>" min="1" max="12">
+						<input type="number" name="month" class="form-control rounded-pill form-control-sm" value="<?= $month; ?>" min="1" max="12">
 					</div>
 					<div class="col-md-6 text-end">
-						<button class="btn btn-primary">
+						<button class="btn btn-primary btn-sm rounded-pill">
 							<i class="fas fa-eye"></i> Tampilkan
 						</button>
-
-						<a href="<?= site_url('laporan/export_pdf?year=' . $year . '&month=' . $month); ?>" class="btn btn-outline-danger">
-							<i class="fas fa-file-pdf"></i> Export PDF
+						<a href="<?= site_url('laporan/export_pdf?year=' . $year . '&month=' . $month); ?>" class="btn btn-outline-danger btn-sm rounded-pill">
+							<i class="fas fa-file-pdf"></i> PDF
 						</a>
-
-						<a href="<?= site_url('laporan/export_excel?year=' . $year . '&month=' . $month); ?>" class="btn btn-outline-success">
-							<i class="fa-solid fa-file-excel"></i> Export Excel
+						<a href="<?= site_url('laporan/export_excel?year=' . $year . '&month=' . $month); ?>" class="btn btn-outline-success btn-sm rounded-pill">
+							<i class="fa-solid fa-file-excel"></i> Excel
 						</a>
 					</div>
 				</form>
@@ -116,52 +193,45 @@
 			}
 			$saldo = $total_masuk - $total_keluar;
 			?>
-			<div class="row mb-4">
+			<div class="row mb-2 g-2">
 				<!-- Total Masuk -->
-				<div class="col-md-4">
-					<div class="summary-box bg-white text-success p-3 rounded shadow d-flex align-items-center">
-						<div class="me-3">
-							<i class="fas fa-arrow-circle-down fa-2x"></i>
-						</div>
-						<div>
-							<h6 class="mb-1">Total Masuk</h6>
-							<p class="mb-0 fw-bold">Rp <?= number_format($total_masuk, 0, ',', '.'); ?></p>
+				<div class="col-md-4 col-12">
+					<div class="summary-box">
+						<i class="fas fa-circle-arrow-down bg-success"></i>
+						<div class="ms-2">
+							<h6>Total Masuk</h6>
+							<p>Rp <?= number_format($total_masuk, 0, ',', '.'); ?></p>
 						</div>
 					</div>
 				</div>
 
 				<!-- Total Keluar -->
-				<div class="col-md-4">
-					<div class="summary-box bg-white text-danger p-3 rounded shadow d-flex align-items-center">
-						<div class="me-3">
-							<i class="fas fa-arrow-circle-up fa-2x"></i>
-						</div>
-						<div>
-							<h6 class="mb-1">Total Keluar</h6>
-							<p class="mb-0 fw-bold">Rp <?= number_format($total_keluar, 0, ',', '.'); ?></p>
+				<div class="col-md-4 col-12">
+					<div class="summary-box">
+						<i class="fas fa-circle-arrow-up bg-danger"></i>
+						<div class="ms-2">
+							<h6>Total Keluar</h6>
+							<p>Rp <?= number_format($total_keluar, 0, ',', '.'); ?></p>
 						</div>
 					</div>
 				</div>
 
 				<!-- Saldo Akhir -->
-				<div class="col-md-4">
-					<div class="summary-box bg-white text-primary p-3 rounded shadow d-flex align-items-center">
-						<div class="me-3">
-							<i class="fas fa-wallet fa-2x"></i>
-						</div>
-						<div>
-							<h6 class="mb-1">Saldo Akhir</h6>
-							<p class="mb-0 fw-bold">Rp <?= number_format($saldo, 0, ',', '.'); ?></p>
+				<div class="col-md-4 col-12">
+					<div class="summary-box">
+						<i class="fas fa-wallet bg-primary"></i>
+						<div class="ms-2">
+							<h6>Saldo Akhir</h6>
+							<p>Rp <?= number_format($saldo, 0, ',', '.'); ?></p>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- End Ringkasan -->
 
-
 			<!-- Tabel -->
 			<div class="table-responsive">
-				<table class="table table-bordered table-hover align-middle">
+				<table class="table table-hover align-middle shadow-sm">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -199,7 +269,9 @@
 			<!-- End Tabel -->
 
 		</div>
-		<p class="text-center text-muted mt-4 small">&copy; <?= date('Y'); ?> CI3 Starter Project — latihan PKL</p>
+		<p class="text-center footer-text mt-2">
+			&copy; <?= date('Y'); ?> CI3 Keuangan — Laporan Bulanan
+		</p>
 	</div>
 	<!-- End Content -->
 
@@ -207,3 +279,4 @@
 </body>
 
 </html>
+ 

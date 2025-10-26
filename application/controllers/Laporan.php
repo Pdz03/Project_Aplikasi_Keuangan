@@ -17,11 +17,13 @@ class Laporan extends CI_Controller
 	public function index()
 	{
 		// Simple form to choose bulan/tahun
-		$year = $this->input->get('year') ?? date('Y');
+		$year  = $this->input->get('year') ?? date('Y');
 		$month = $this->input->get('month') ?? date('m');
-		$data['year'] = $year;
+
+		$data['year']  = $year;
 		$data['month'] = $month;
 		$data['rekap'] = $this->Transaksi_model->get_by_month($year, $month);
+
 		$this->load->view('laporan/index', $data);
 	}
 
@@ -39,19 +41,20 @@ class Laporan extends CI_Controller
 
 		// load dompdf
 		$this->load->library('Dompdf_gen');
+		$dompdf = $this->dompdf_gen->dompdf; // ambil instance dompdf dari library
 
-		// akses pakai $this->dompdf_gen
-		$this->dompdf_gen->dompdf->loadHtml($html);
-		$this->dompdf_gen->dompdf->setPaper('A4', 'portrait');
-		$this->dompdf_gen->dompdf->render();
+		$dompdf->loadHtml($html);
+		$dompdf->setPaper('A4', 'portrait');
+		$dompdf->render();
 
-		$this->dompdf_gen->dompdf->stream("laporan-{$month}-{$year}.pdf", ["Attachment" => true]);
+		// download otomatis
+		$dompdf->stream("laporan-{$month}-{$year}.pdf", ["Attachment" => true]);
 	}
 
 	public function export_excel()
 	{
-		$year = $this->input->get('year');
-		$month = $this->input->get('month');
+		$year  = $this->input->get('year') ?? date('Y');
+		$month = $this->input->get('month') ?? date('m');
 
 		$data['laporan'] = $this->Transaksi_model->get_by_month($year, $month);
 

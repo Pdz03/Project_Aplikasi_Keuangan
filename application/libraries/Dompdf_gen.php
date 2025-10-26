@@ -11,14 +11,15 @@ class Dompdf_gen
     public function __construct()
     {
         // load autoload Composer
-        require_once FCPATH . 'vendor/autoload.php';
+        require_once APPPATH . '../vendor/autoload.php';
 
         // set opsi Dompdf
         $options = new Options();
-        $options->set('isRemoteEnabled', true); // biar bisa load asset/gambar eksternal
-        $options->set('defaultFont', 'DejaVu Sans'); // font default support UTF-8
-
+        $options->set('isRemoteEnabled', true); 
+        $options->set('defaultFont', 'DejaVu Sans'); 
+ 
         // buat instance Dompdf
         $this->dompdf = new Dompdf($options);
     }
 }
+  
